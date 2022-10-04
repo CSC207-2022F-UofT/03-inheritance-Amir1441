@@ -5,7 +5,14 @@
  * 1. Introduction to Java helpful.
  */
 
+import java.util.*;
+
+
 public abstract class Bag {
+    private String colour;
+    private int numberOfContents;
+    private int capacity;
+    private String[] contents;
     /*
      * TODO: Create the following private instance variables
      *       - a String named color
@@ -26,6 +33,16 @@ public abstract class Bag {
      * be empty (e.g. numberOfContents is 0 and an empty String array for
      * its contents.)
      */
+    public Bag(String colour, int capacity){
+        this.numberOfContents = 0;
+        this.contents = new String[] {"Hello", "World"};
+        this.colour = colour;
+        this.capacity = capacity;
+    }
+
+
+
+
 
 
 
@@ -38,6 +55,15 @@ public abstract class Bag {
      *           - getCapacity
      */
 
+    public String getColour() {
+        return colour;
+    }
+    public int getNumberOfContents() {
+        return numberOfContents;
+    }
+    public int getCapacity() {
+        return capacity;
+    }
 
 
 
@@ -45,6 +71,82 @@ public abstract class Bag {
      * TODO: Create a setter function called setColor which sets the
      *       color of this bag to the given color.
      */
+
+    public void setColour(String colour) {
+        this.colour = colour;
+    }
+
+
+
+    /**
+     * TODO: Create a method called popItem that returns a String.
+     *       The string should be the last item added to this Bag
+     *       and the item should be removed from this Bag.
+     *       Remember to modify numberOfContents accordingly.
+     * <p>
+     * If there are no items in this Bag, return null.
+     *
+     */
+
+    public String popItem() {
+        List al = Arrays.asList(contents);
+        int index = al.size() - 1;
+        al.remove(index);
+        numberOfContents = numberOfContents - 1;
+        return null;
+
+    }
+
+
+
+        /**
+         * Increase this bag's capacity by n.
+         *
+         * @param n the amount to increase this Bag's capacity by
+         */
+        public void increaseCapacity(int n){
+            capacity = capacity + n;
+
+
+        }
+
+
+        /**
+         * Return the details of this Bag.
+         * This method requires you to have created the private
+         * instance variables mentioned above.
+         *
+         * @return
+         */
+        @Override
+        public String toString () {
+            return this.colour + " Bag (" + this.numberOfContents + " / " +
+                    this.capacity + ")";
+        }
+
+        public void addItem(String item) {
+            if (numberOfContents < capacity) {
+                contents[numberOfContents] = item;
+                numberOfContents++;
+            }
+        }
+
+        /*
+         * Below we have defined an abstract method.
+         * This method takes no arguments and does not return anything.
+         * It increases the capacity of this Bag.
+         *
+         * You will need to implement this method in
+         * HandBag.java and CrossbodyBag.java.
+         *
+         * We recommend you look at HandBag.java first.
+         */
+        public abstract void enhance();
+
+
+    }
+
+
 
 
 
@@ -59,59 +161,10 @@ public abstract class Bag {
      *
      *       This method should return true if the item was added
      *       and false otherwise.
+     *
      */
 
 
 
 
 
-    /**
-     * TODO: Create a method called popItem that returns a String.
-     *       The string should be the last item added to this Bag
-     *       and the item should be removed from this Bag.
-     *       Remember to modify numberOfContents accordingly.
-     *
-     * If there are no items in this Bag, return null.
-     *
-     * @return
-     */
-
-
-
-
-
-    /**
-     * Increase this bag's capacity by n.
-     *
-     * @param n the amount to increase this Bag's capacity by
-     */
-    public void increaseCapacity(int n) {
-        // TODO: Implement this method.
-
-    }
-
-    /**
-     * Return the details of this Bag.
-     * This method requires you to have created the private
-     * instance variables mentioned above.
-     *
-     * @return
-     */
-    @Override
-    public String toString() {
-        return this.color + " Bag (" + this.numberOfContents + " / " +
-                this.capacity + ")";
-    }
-
-    /*
-     * Below we have defined an abstract method.
-     * This method takes no arguments and does not return anything.
-     * It increases the capacity of this Bag.
-     *
-     * You will need to implement this method in
-     * HandBag.java and CrossbodyBag.java.
-     *
-     * We recommend you look at HandBag.java first.
-     */
-    public abstract void enhance();
-}
