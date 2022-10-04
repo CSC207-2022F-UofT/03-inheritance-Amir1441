@@ -72,7 +72,7 @@ public abstract class Bag {
      *       color of this bag to the given color.
      */
 
-    public void setColour(String colour) {
+    public void setColor(String colour) {
         this.colour = colour;
     }
 
@@ -89,11 +89,11 @@ public abstract class Bag {
      */
 
     public String popItem() {
-        List al = Arrays.asList(contents);
-        int index = al.size() - 1;
-        al.remove(index);
-        numberOfContents = numberOfContents - 1;
-        return null;
+        List <String> al = Arrays.asList(contents);
+        List <String> ali = new ArrayList<>(al);
+        int index = ali.size() - 1;
+        numberOfContents = numberOfContents -1;
+        return ali.remove(index);
 
     }
 

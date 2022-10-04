@@ -11,6 +11,14 @@ public class HandBag extends Bag{
     /**
      * Creates a new HandBag with the given color and
      * capacity.
+     */
+    public HandBag() {
+        this(null, 0);
+    }
+
+    /**
+     * Creates a new HandBag with the given color and
+     * capacity.
      *
      * @param color
      * @param capacity
@@ -36,4 +44,10 @@ public class HandBag extends Bag{
          */
         super.increaseCapacity(1);
     }
+
+    public String getColor() {
+        return getColour();
+    }
+
+
 }
